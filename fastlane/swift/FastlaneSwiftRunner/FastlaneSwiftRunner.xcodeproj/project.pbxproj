@@ -12,6 +12,11 @@
 		1257253924B7992C00E04FA3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1257253824B7992B00E04FA3 /* main.swift */; };
 		1267C3F42773A43E004DE48A /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1267C3F32773A43E004DE48A /* Atomic.swift */; };
 		12D2EB8D2620D83C00844013 /* OptionalConfigValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2EB8C2620D83B00844013 /* OptionalConfigValue.swift */; };
+		49A8494F2C1F25AA0079193D /* LaneAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8494E2C1F25AA0079193D /* LaneAction.swift */; };
+		49A849512C1F25D80079193D /* ActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A849502C1F25D80079193D /* ActionBuilder.swift */; };
+		49A849532C1F26040079193D /* GymAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A849522C1F26040079193D /* GymAction.swift */; };
+		49A849552C1F264E0079193D /* LaneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A849542C1F264E0079193D /* LaneBuilder.swift */; };
+		49A849572C1F266A0079193D /* LaneRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A849562C1F266A0079193D /* LaneRunner.swift */; };
 		B302067B1F5E3E9000DE6EBD /* SnapshotfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30206741F5E3E9000DE6EBD /* SnapshotfileProtocol.swift */; };
 		B302067C1F5E3E9000DE6EBD /* GymfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30206751F5E3E9000DE6EBD /* GymfileProtocol.swift */; };
 		B302067D1F5E3E9000DE6EBD /* MatchfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30206761F5E3E9000DE6EBD /* MatchfileProtocol.swift */; };
@@ -46,7 +51,7 @@
 		C0459CAB27261886002CDFB9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "$SRCROOT/../..";
+			dstPath = $SRCROOT/../..;
 			dstSubfolderSpec = 0;
 			files = (
 				C0459CAC27261897002CDFB9 /* FastlaneRunner in CopyFiles */,
@@ -61,6 +66,11 @@
 		1257253824B7992B00E04FA3 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../main.swift; sourceTree = "<group>"; };
 		1267C3F32773A43E004DE48A /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atomic.swift; path = ../Atomic.swift; sourceTree = "<group>"; };
 		12D2EB8C2620D83B00844013 /* OptionalConfigValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionalConfigValue.swift; path = ../OptionalConfigValue.swift; sourceTree = "<group>"; };
+		49A8494E2C1F25AA0079193D /* LaneAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaneAction.swift; sourceTree = "<group>"; };
+		49A849502C1F25D80079193D /* ActionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBuilder.swift; sourceTree = "<group>"; };
+		49A849522C1F26040079193D /* GymAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymAction.swift; sourceTree = "<group>"; };
+		49A849542C1F264E0079193D /* LaneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaneBuilder.swift; sourceTree = "<group>"; };
+		49A849562C1F266A0079193D /* LaneRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaneRunner.swift; sourceTree = "<group>"; };
 		B30206741F5E3E9000DE6EBD /* SnapshotfileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotfileProtocol.swift; path = ../SnapshotfileProtocol.swift; sourceTree = "<group>"; };
 		B30206751F5E3E9000DE6EBD /* GymfileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GymfileProtocol.swift; path = ../GymfileProtocol.swift; sourceTree = "<group>"; };
 		B30206761F5E3E9000DE6EBD /* MatchfileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchfileProtocol.swift; path = ../MatchfileProtocol.swift; sourceTree = "<group>"; };
@@ -106,6 +116,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49A8494D2C1F25890079193D /* DSL */ = {
+			isa = PBXGroup;
+			children = (
+				49A849502C1F25D80079193D /* ActionBuilder.swift */,
+				49A849522C1F26040079193D /* GymAction.swift */,
+				49A8494E2C1F25AA0079193D /* LaneAction.swift */,
+				49A849542C1F264E0079193D /* LaneBuilder.swift */,
+				49A849562C1F266A0079193D /* LaneRunner.swift */,
+			);
+			name = DSL;
+			sourceTree = "<group>";
+		};
 		B33BAF4E1F51F8D90001A751 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +203,7 @@
 		D512BA011F7C7F40000D2137 /* Runner Code */ = {
 			isa = PBXGroup;
 			children = (
+				49A8494D2C1F25890079193D /* DSL */,
 				1257253824B7992B00E04FA3 /* main.swift */,
 				B3144C0A200553DC00470AFE /* README.txt */,
 				D5BAFD111F7DAAFC0030B324 /* ArgumentProcessor.swift */,
@@ -249,18 +272,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A8494F2C1F25AA0079193D /* LaneAction.swift in Sources */,
 				B3BA65A91F5A269100B34850 /* RubyCommand.swift in Sources */,
 				D5D1DE991FFEE8EA00502A00 /* RubyCommandable.swift in Sources */,
 				D55B28C41F6C588300DC42C5 /* Gymfile.swift in Sources */,
 				B302067D1F5E3E9000DE6EBD /* MatchfileProtocol.swift in Sources */,
 				1267C3F42773A43E004DE48A /* Atomic.swift in Sources */,
 				B3BA65AC1F5A269100B34850 /* SocketClientDelegateProtocol.swift in Sources */,
+				49A849552C1F264E0079193D /* LaneBuilder.swift in Sources */,
 				B3BA65A71F5A269100B34850 /* LaneFileProtocol.swift in Sources */,
 				D55B28C61F6C588300DC42C5 /* Precheckfile.swift in Sources */,
 				B302067F1F5E3E9000DE6EBD /* ScanfileProtocol.swift in Sources */,
 				D55B28C51F6C588300DC42C5 /* Matchfile.swift in Sources */,
 				B30206801F5E3E9000DE6EBD /* ScreengrabfileProtocol.swift in Sources */,
 				D5BAFD121F7DAAFC0030B324 /* ArgumentProcessor.swift in Sources */,
+				49A849512C1F25D80079193D /* ActionBuilder.swift in Sources */,
 				B302067C1F5E3E9000DE6EBD /* GymfileProtocol.swift in Sources */,
 				B302067B1F5E3E9000DE6EBD /* SnapshotfileProtocol.swift in Sources */,
 				D55B28C31F6C588300DC42C5 /* Deliverfile.swift in Sources */,
@@ -268,6 +294,7 @@
 				0311E38B230AC9490060BB5C /* Actions.swift in Sources */,
 				D5A7C48F1F7C4DAF00A91DE6 /* Appfile.swift in Sources */,
 				B3BA65AB1F5A269100B34850 /* SocketClient.swift in Sources */,
+				49A849572C1F266A0079193D /* LaneRunner.swift in Sources */,
 				B30206811F5E3E9000DE6EBD /* DeliverfileProtocol.swift in Sources */,
 				B3BA65AA1F5A269100B34850 /* Runner.swift in Sources */,
 				B3BA65AF1F5A2D5C00B34850 /* RunnerArgument.swift in Sources */,
@@ -278,6 +305,7 @@
 				D55B28C71F6C588300DC42C5 /* Scanfile.swift in Sources */,
 				0311E387230AC1B20060BB5C /* Plugins.swift in Sources */,
 				D55B28C91F6C588300DC42C5 /* Snapshotfile.swift in Sources */,
+				49A849532C1F26040079193D /* GymAction.swift in Sources */,
 				B3BA65A61F5A269100B34850 /* Fastlane.swift in Sources */,
 				D55B28C81F6C588300DC42C5 /* Screengrabfile.swift in Sources */,
 				12D2EB8D2620D83C00844013 /* OptionalConfigValue.swift in Sources */,

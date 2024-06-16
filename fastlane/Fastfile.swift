@@ -13,10 +13,30 @@ class Fastfile: LaneFile {
 		desc("The way xcarchive was created before Custom DSL.")
         
         gym(
-            configuration: "Debug",          // Use Debug for development, Release for distribution
-            skipPackageIpa: true,            // Keep this if you want to skip packaging the .ipa
-            exportMethod: "development",     // Change this to the appropriate export method
-            buildPath: "simulator_build_without_DSL"    // Path where the build artifacts will be stored
+            clean: true,
+            configuration: "Debug",
+            skipPackageIpa: true,
+            exportMethod: "development",
+            buildPath: "simulator_build_without_DSL"
         )
 	}
+    
+    func xcarchiveLane() {
+        desc("The way xcarchive is created with Custom DSL.")
+        
+        let builder = Builder()
+        let actions = builder.xcarchiveLaneBuild()
+        let runner = LaneRunner(actions: actions)
+        runner.run()
+    }
+}
+
+public final class Builder {
+    @LaneBuilder
+    func xcarchiveLaneBuild() -> [LaneAction] {
+        GymConfiguration.debug
+        GymOutput.xcarchive
+        GymExportMethod.development
+        "simulator_build"
+    }
 }
