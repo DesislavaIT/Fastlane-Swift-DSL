@@ -35,7 +35,7 @@ class Fastfile: LaneFile {
         
         gym(
             clean: true,
-            outputDirectory: "IPA",
+            outputDirectory: "IPA_without_DSL",
             configuration: "Debug",
             exportMethod: "development",
             buildPath: "simulator_build_without_DSL"
