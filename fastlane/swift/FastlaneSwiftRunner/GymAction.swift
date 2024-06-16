@@ -30,6 +30,7 @@ public enum GymExportMethod: String {
 }
 
 public struct GymAction: LaneAction {
+    var outputDirectory: String = "."
     let configuration: GymConfiguration
     let output: GymOutput
     let exportMethod: GymExportMethod
@@ -45,6 +46,18 @@ public struct GymAction: LaneAction {
         self.buildPath = buildPathFunc()
     }
     
+    init(@ActionBuilder _ outputDirectoryFunc: () -> String,
+         @ActionBuilder _ configurationFunc: () -> GymConfiguration = { .debug },
+         @ActionBuilder _ output: () -> GymOutput = { .ipa },
+         @ActionBuilder _ exportMethodFunc: () -> GymExportMethod = { .development },
+         @ActionBuilder _ buildPathFunc: () -> String) {
+        self.outputDirectory = outputDirectoryFunc()
+        self.configuration = configurationFunc()
+        self.output = output()
+        self.exportMethod = exportMethodFunc()
+        self.buildPath = buildPathFunc()
+    }
+    
     public func run() {
         let configuration = OptionalConfigValue<String?>.init(stringLiteral: self.configuration.rawValue)
         let skipPackageIpa = OptionalConfigValue<Bool>.init(booleanLiteral: output == .xcarchive)
@@ -53,6 +66,7 @@ public struct GymAction: LaneAction {
         
         gym(
             clean: true,
+            outputDirectory: outputDirectory,
             configuration: configuration,
             skipPackageIpa: skipPackageIpa,
             exportMethod: exportMethod,
