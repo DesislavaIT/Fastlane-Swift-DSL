@@ -23,4 +23,20 @@ public struct LaneBuilder {
         
         return [gymAction]
     }
+    
+    public static func buildBlock(_ outputDirectory: String,
+                                  _ configuration: GymConfiguration = .debug,
+                                  _ output: GymOutput = .ipa,
+                                  _ exportMethod: GymExportMethod = .development,
+                                  _ buildPath: String) ->  [LaneAction] {
+        let gymAction = GymAction(
+            { outputDirectory },
+            { configuration },
+            { output },
+            { exportMethod },
+            { buildPath }
+        )
+        
+        return [gymAction]
+    }
 }

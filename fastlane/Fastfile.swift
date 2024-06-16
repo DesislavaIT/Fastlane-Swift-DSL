@@ -29,6 +29,27 @@ class Fastfile: LaneFile {
         let runner = LaneRunner(actions: actions)
         runner.run()
     }
+    
+    func buildIpaWithoutDSLLane() {
+        desc("The way IPA file was created before Custom DSL.")
+        
+        gym(
+            clean: true,
+            outputDirectory: "IPA",
+            configuration: "Debug",
+            exportMethod: "development",
+            buildPath: "simulator_build_without_DSL"
+        )
+    }
+    
+    func buildIpaLane() {
+        desc("The way IPA file is created with Custom DSL.")
+        
+        let builder = Builder()
+        let actions = builder.ipaLaneBuild()
+        let runner = LaneRunner(actions: actions)
+        runner.run()
+    }
 }
 
 public final class Builder {
@@ -36,6 +57,15 @@ public final class Builder {
     func xcarchiveLaneBuild() -> [LaneAction] {
         GymConfiguration.debug
         GymOutput.xcarchive
+        GymExportMethod.development
+        "simulator_build"
+    }
+    
+    @LaneBuilder
+    func ipaLaneBuild() -> [LaneAction] {
+        "IPA"
+        GymConfiguration.debug
+        GymOutput.ipa
         GymExportMethod.development
         "simulator_build"
     }
