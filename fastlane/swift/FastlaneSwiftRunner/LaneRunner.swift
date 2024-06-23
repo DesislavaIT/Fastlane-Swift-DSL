@@ -9,10 +9,11 @@
 import Foundation
 
 public final class LaneRunner {
-    let actions: [LaneAction]
+    private let actions: [LaneAction]
     
-    init(actions: [LaneAction]) {
-        self.actions = actions
+    init(output: GymOutput, @LaneBuilder _ builder: () -> [LaneAction]) {
+        LaneBuilder.output = output
+        actions = builder()
     }
     
     func run() {
