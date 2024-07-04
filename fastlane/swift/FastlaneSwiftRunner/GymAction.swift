@@ -46,6 +46,16 @@ public struct GymAction: LaneAction {
         self.buildPath = buildPathFunc()
     }
     
+    init(_ output: GymOutput,
+         @ActionBuilder _ configurationFunc: () -> GymConfiguration = { .debug },
+         @ActionBuilder _ exportMethodFunc: () -> GymExportMethod = { .development },
+         @ActionBuilder _ buildPathFunc: () -> String) {
+        self.output = output
+        self.configuration = configurationFunc()
+        self.exportMethod = exportMethodFunc()
+        self.buildPath = buildPathFunc()
+    }
+    
     init(@ActionBuilder _ outputDirectoryFunc: () -> String,
          @ActionBuilder _ configurationFunc: () -> GymConfiguration = { .debug },
          @ActionBuilder _ output: () -> GymOutput = { .ipa },
@@ -54,6 +64,18 @@ public struct GymAction: LaneAction {
         self.outputDirectory = outputDirectoryFunc()
         self.configuration = configurationFunc()
         self.output = output()
+        self.exportMethod = exportMethodFunc()
+        self.buildPath = buildPathFunc()
+    }
+    
+    init(_ output: GymOutput,
+         @ActionBuilder _ outputDirectoryFunc: () -> String,
+         @ActionBuilder _ configurationFunc: () -> GymConfiguration = { .debug },
+         @ActionBuilder _ exportMethodFunc: () -> GymExportMethod = { .development },
+         @ActionBuilder _ buildPathFunc: () -> String) {
+        self.output = output
+        self.outputDirectory = outputDirectoryFunc()
+        self.configuration = configurationFunc()
         self.exportMethod = exportMethodFunc()
         self.buildPath = buildPathFunc()
     }
